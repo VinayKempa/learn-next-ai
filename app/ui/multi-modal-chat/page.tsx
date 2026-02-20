@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import Image from "next/image";
+import { Spinner } from "@/components/spinner";
 
 export default function MultiModalPage() {
   const [input, setInput] = useState("");
@@ -82,9 +83,8 @@ export default function MultiModalPage() {
         </div>
       ))}
       {status === "submitted" || status === "streaming" ? (
-        <div className="mb-4 p-4 rounded-lg bg-gray-100 self-start">
-          <div className="font-bold mb-2">AI:</div>
-          <div>...</div>
+        <div className="mb-4 p-4 text-gray-800 self-start">
+          <Spinner />
         </div>
       ) : null}
       <form
