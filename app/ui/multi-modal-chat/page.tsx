@@ -55,10 +55,21 @@ export default function MultiModalPage() {
                     <Image
                       key={`${message.id}-${partIndex}`}
                       src={part.url}
-                      alt={part.filename || "Uploaded image"}
+                      alt={part.filename || `attachment-${partIndex}`}
                       className="max-w-full h-auto rounded-lg"
                       width={500}
                       height={500}
+                    />
+                  );
+                } else if (part.mediaType?.startsWith("application/pdf")) {
+                  return (
+                    <iframe
+                      key={`${message.id}-${partIndex}`}
+                      src={part.url}
+                      className="w-full h-96 border border-gray-300 rounded-lg"
+                      width={500}
+                      height={600}
+                      title={part.filename || `attachment-${partIndex}`}
                     />
                   );
                 }
