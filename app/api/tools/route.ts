@@ -36,6 +36,8 @@ export async function POST(request: Request) {
   try {
     const { messages }: { messages: ChatMessage[] } = await request.json();
 
+    console.log("Received messages:", messages);
+
     const result = streamText({
       model: openai("gpt-5-mini"),
       messages: await convertToModelMessages(messages),

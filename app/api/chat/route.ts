@@ -10,6 +10,7 @@ export async function POST(request: Request) {
     });
     return result.toUIMessageStreamResponse();
   } catch (error) {
+    console.error("Error streaming chat completion:", error);
     return new Response("Failed to stream chat completion", { status: 500 });
   }
 }
