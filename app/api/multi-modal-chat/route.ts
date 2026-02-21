@@ -10,6 +10,7 @@ export async function POST(request: Request) {
     });
     return result.toUIMessageStreamResponse();
   } catch (error) {
-    return new Response("Failed to stream chat completion", { status: 500 });
+    console.error("Error generating multi-modal chat:", error);
+    return new Response("Failed to stream multi-modal chat completion", { status: 500 });
   }
 }
